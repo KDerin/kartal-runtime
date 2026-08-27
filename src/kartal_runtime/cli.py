@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 import json
 from collections.abc import Sequence
+from pathlib import Path
 
+from .benchmark import run_benchmark
 from .evaluation import evaluate_process
 from .models import ToolSpec
 from .policy import default_policy
@@ -17,6 +19,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("demo", help="run a deterministic provenance demo")
+    bench = subparsers.add_parser(
+        "bench", help="run the KARTAL-Bench v0.1 conformance suite"
+    )
+    bench.add_argument(
+        "--output",
+        type=Path,
+        help="optional path for a machine-readable JSON report",
+    )
+    bench.add_argument(
+        "--compact",
+        action="store_true",
+        help="emit compact JSON instead of indented JSON",
+    )
     return parser
 
 
@@ -25,6 +40,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command == "demo":
         print(json.dumps(_demo(), indent=2, ensure_ascii=False))
         return 0
+    if args.command == "bench":
+        report = run_benchmark().to_dict()
+        rendered = json.dumps(
+            report,
+            indent=None if args.compact else 2,
+            ensure_ascii=False,
+        )
+        if args.output is not None:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(f"{rendered}\n", encoding="utf-8")
+        print(rendered)
+        return 0 if report["summary"]["failed_count"] == 0 else 1
     return 2
 
 

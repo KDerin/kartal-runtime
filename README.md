@@ -7,6 +7,7 @@
 [![CI](https://github.com/KDerin/kartal-runtime/actions/workflows/ci.yml/badge.svg)](https://github.com/KDerin/kartal-runtime/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Live KARTAL-Bench](https://img.shields.io/badge/live-KARTAL--Bench-41e9ff.svg)](https://kartal-bench.kartalderin.chatgpt.site)
 
 **Knowledge-grounded Auditable Runtime for Traceable Agentic Logic**
 
@@ -43,6 +44,24 @@ replacing them.
 - Process-level grounding and completeness metrics
 - Zero mandatory runtime dependencies
 - Python 3.11+
+
+## KARTAL-Bench
+
+[**Open the interactive KARTAL-Bench laboratory →**](https://kartal-bench.kartalderin.chatgpt.site)
+
+KARTAL-Bench v0.1 is an executable conformance suite for the reference runtime. Its eight
+deterministic scenarios test grounded execution, missing-evidence denial, high-risk denial,
+human approval, approval absence, journal tampering, tool-failure localization, and dry replay.
+
+```bash
+kartal bench
+kartal bench --output benchmarks/results/my-run.json
+```
+
+The checked-in [reference result](benchmarks/results/kartal-bench-v0.1.0.json) is
+machine-readable. See the [benchmark methodology](docs/benchmark-methodology.md) before
+interpreting scores. v0.1 measures KARTAL conformance; it does not claim superiority over
+external agent frameworks.
 
 ## Quick start
 
