@@ -1,5 +1,9 @@
 # KARTAL Runtime
 
+<p align="center">
+  <img src="docs/assets/kartal-runtime-hero.jpg" alt="KARTAL Runtime — auditable agentic AI" width="100%">
+</p>
+
 [![CI](https://github.com/KDerin/kartal-runtime/actions/workflows/ci.yml/badge.svg)](https://github.com/KDerin/kartal-runtime/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
