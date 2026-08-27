@@ -1,0 +1,38 @@
+name: Research proposal
+description: Propose an experiment, benchmark, adapter, or collaboration
+title: "[Research]: "
+labels: ["research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State a falsifiable question or concrete engineering objective.
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: Proposed method
+      description: Describe scenarios, baselines, metrics, and analysis.
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Reproducibility artifacts
+      description: List code, data, configurations, and expected licenses.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and limitations
+      description: Include safety, privacy, bias, validity, and misuse concerns.
+    validations:
+      required: true
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation (optional)
+      description: University, laboratory, company, or independent researcher.
