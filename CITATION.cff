@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use KARTAL Runtime in research, please cite this software."
+title: "KARTAL Runtime: Knowledge-grounded Auditable Runtime for Traceable Agentic Logic"
+type: software
+version: 0.1.0
+date-released: 2026-08-27
+license: Apache-2.0
+repository-code: "https://github.com/KDerin/kartal-runtime"
+url: "https://github.com/KDerin/kartal-runtime"
+authors:
+  - family-names: Derin
+    given-names: Kartal
+    orcid: "https://orcid.org/0009-0009-7104-5955"
+keywords:
+  - agentic AI
+  - AI governance
+  - execution provenance
+  - multi-agent systems
+  - auditability

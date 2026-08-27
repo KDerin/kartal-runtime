@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kartal-runtime"
+version = "0.1.0"
+description = "Knowledge-grounded Auditable Runtime for Traceable Agentic Logic"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Kartal Derin" }
+]
+keywords = [
+  "agentic-ai",
+  "ai-governance",
+  "provenance",
+  "multi-agent-systems",
+  "auditability",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "mypy>=1.11",
+  "pytest>=8.3",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+kartal = "kartal_runtime.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/KDerin/kartal-runtime"
+Documentation = "https://github.com/KDerin/kartal-runtime/tree/main/docs"
+Issues = "https://github.com/KDerin/kartal-runtime/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["kartal_runtime"]

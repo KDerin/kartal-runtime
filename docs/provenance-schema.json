@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/KDerin/kartal-runtime/blob/main/docs/provenance-schema.json",
+  "title": "KARTAL Provenance Snapshot v0.1",
+  "type": "object",
+  "required": ["schema_version", "run_id", "nodes", "edges", "events", "head_hash"],
+  "properties": {
+    "schema_version": {
+      "const": "kartal.provenance.v0.1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/event" }
+    },
+    "head_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "runtime_status": {
+      "enum": ["running", "completed", "failed"]
+    },
+    "task": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "kind", "payload", "run_id", "created_at"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": [
+            "run",
+            "evidence",
+            "claim",
+            "decision",
+            "action",
+            "observation",
+            "approval",
+            "error"
+          ]
+        },
+        "payload": { "type": "object" },
+        "run_id": { "type": "string", "minLength": 1 },
+        "created_at": { "type": "string" },
+        "agent_id": { "type": ["string", "null"] },
+        "confidence": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "source_uri": { "type": ["string", "null"] }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["source_id", "target_id", "kind", "metadata", "created_at"],
+      "properties": {
+        "source_id": { "type": "string", "minLength": 1 },
+        "target_id": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "derived_from",
+            "informed",
+            "triggered",
+            "produced",
+            "approved",
+            "rejected",
+            "failed_at",
+            "part_of"
+          ]
+        },
+        "metadata": { "type": "object" },
+        "created_at": { "type": "string" }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "sequence",
+        "timestamp",
+        "operation",
+        "data",
+        "previous_hash",
+        "event_hash"
+      ],
+      "properties": {
+        "sequence": { "type": "integer", "minimum": 1 },
+        "timestamp": { "type": "string" },
+        "operation": { "enum": ["add_node", "add_edge"] },
+        "data": { "type": "object" },
+        "previous_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "event_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
+  }
+}
