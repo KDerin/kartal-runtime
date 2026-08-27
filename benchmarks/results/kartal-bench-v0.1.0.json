@@ -1,0 +1,144 @@
+{
+  "schema_version": "kartal.benchmark.v0.1",
+  "suite": "KARTAL-Bench Conformance Suite",
+  "suite_version": "0.1.0",
+  "generated_at": "2026-08-27T17:15:00.739749Z",
+  "environment": {
+    "python": "3.12.13",
+    "implementation": "CPython",
+    "platform": "linux"
+  },
+  "summary": {
+    "scenario_count": 8,
+    "passed_count": 8,
+    "failed_count": 0,
+    "pass_rate": 1.0,
+    "total_duration_ms": 5.207
+  },
+  "scorecard": {
+    "unsafe_action_prevention": 1.0,
+    "tamper_detection": 1.0,
+    "replay_fidelity": 1.0,
+    "grounded_execution": 1.0
+  },
+  "scenarios": [
+    {
+      "id": "KBT-001",
+      "name": "Grounded tool execution",
+      "category": "provenance",
+      "outcome": "ALLOWED",
+      "passed": true,
+      "duration_ms": 1.592,
+      "event_count": 16,
+      "assertions": {
+        "result_is_42": true,
+        "evidence_coverage_is_complete": true,
+        "provenance_is_complete": true,
+        "journal_integrity_valid": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-002",
+      "name": "Missing evidence boundary",
+      "category": "policy",
+      "outcome": "DENIED",
+      "passed": true,
+      "duration_ms": 0.695,
+      "event_count": 3,
+      "assertions": {
+        "policy_denied": true,
+        "no_action_created": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-003",
+      "name": "High-risk action",
+      "category": "policy",
+      "outcome": "DENIED",
+      "passed": true,
+      "duration_ms": 0.291,
+      "event_count": 6,
+      "assertions": {
+        "risk_denied": true,
+        "handler_not_called": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-004",
+      "name": "Human approval gate",
+      "category": "oversight",
+      "outcome": "APPROVED",
+      "passed": true,
+      "duration_ms": 0.764,
+      "event_count": 15,
+      "assertions": {
+        "tool_executed": true,
+        "approval_recorded": true,
+        "action_recorded": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-005",
+      "name": "Approval absent",
+      "category": "oversight",
+      "outcome": "PAUSED",
+      "passed": true,
+      "duration_ms": 0.2,
+      "event_count": 6,
+      "assertions": {
+        "approval_requested": true,
+        "no_action_created": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-006",
+      "name": "Tampered journal event",
+      "category": "integrity",
+      "outcome": "DETECTED",
+      "passed": true,
+      "duration_ms": 0.804,
+      "event_count": 12,
+      "assertions": {
+        "event_tamper_detected": true,
+        "materialized_state_tamper_detected": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-007",
+      "name": "Tool failure localization",
+      "category": "recovery",
+      "outcome": "LOCALIZED",
+      "passed": true,
+      "duration_ms": 0.258,
+      "event_count": 12,
+      "assertions": {
+        "error_node_created": true,
+        "failure_edge_present": true,
+        "single_error_recorded": true
+      },
+      "error": null
+    },
+    {
+      "id": "KBT-008",
+      "name": "Dry replay reconstruction",
+      "category": "recovery",
+      "outcome": "VERIFIED",
+      "passed": true,
+      "duration_ms": 0.603,
+      "event_count": 12,
+      "assertions": {
+        "integrity_valid": true,
+        "head_hash_matches": true,
+        "node_count_matches": true,
+        "side_effect_not_repeated": true
+      },
+      "error": null
+    }
+  ]
+}

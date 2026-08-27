@@ -1,5 +1,6 @@
 """KARTAL Runtime public API."""
 
+from .benchmark import BenchmarkReport, ScenarioResult, run_benchmark
 from .evaluation import ProcessMetrics, evaluate_process
 from .models import (
     EdgeKind,
@@ -33,6 +34,7 @@ from .runtime import (
 __all__ = [
     "AgentRuntime",
     "ApprovalRequired",
+    "BenchmarkReport",
     "DecisionProvenanceGraph",
     "DryReplay",
     "EdgeKind",
@@ -51,12 +53,14 @@ __all__ = [
     "RiskThresholdRule",
     "RuleResult",
     "RunStatus",
+    "ScenarioResult",
     "ToolAllowlistRule",
     "ToolExecution",
     "ToolExecutionFailed",
     "ToolSpec",
     "default_policy",
     "evaluate_process",
+    "run_benchmark",
 ]
 
 __version__ = "0.1.0"

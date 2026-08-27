@@ -4,10 +4,16 @@ All notable changes to KARTAL Runtime will be documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Executable KARTAL-Bench v0.1 conformance suite and JSON reporting CLI
+- Interactive benchmark laboratory with scenario, integrity, and method views
+- Reproducible reference result and benchmark methodology
+
 ### Planned
 
 - Framework adapters
-- KARTAL-Bench task runner
+- Comparative KARTAL-Bench adapters
 - Side-effect-aware recovery contracts
 
 ## [0.1.0] — 2026-08-27
